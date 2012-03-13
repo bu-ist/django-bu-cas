@@ -1,0 +1,6 @@
+===========
+BU Django CAS
+===========
+
+The BU Django CAS middleware provides CAS integration for Django projects, allowing application to authetnicate against a CAS server.
+
