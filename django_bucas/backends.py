@@ -5,7 +5,7 @@ from urlparse import urljoin
 
 from django.conf import settings
 
-from dj_cas.models import User
+from django_bucas.models import User
 
 __all__ = ['CASBackend']
 
