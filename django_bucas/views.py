@@ -3,7 +3,7 @@
 from urllib import urlencode
 from urlparse import urljoin
 
-from django.http import get_host, HttpResponseRedirect, HttpResponseForbidden
+from django.http import HttpResponseRedirect, HttpResponseForbidden
 from django.conf import settings
 from django.contrib import messages
 from django.contrib.auth import REDIRECT_FIELD_NAME
@@ -12,9 +12,9 @@ __all__ = ['login', 'logout']
 
 def _service_url(request, redirect_to=None):
     """Generates application service URL for CAS"""
-
+    
     protocol = ('http://', 'https://')[request.is_secure()]
-    host = get_host(request)
+    host = request.get_host()
     service = protocol + host + request.path
     if redirect_to:
         if '?' in service:
