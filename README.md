@@ -3,10 +3,9 @@
 
 The BU Django CAS middleware provides CAS integration for Django projects, allowing application to authetnicate against a CAS server.
 
-**Note:To use this middleware, you must be running django >= 1.5.**
+**Note: To use this middleware, you must be running django >= 1.5.**
 
 # Instructions #
-
 
 Add CAS configuration lines to settings.py:
 
