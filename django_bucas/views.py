@@ -37,7 +37,7 @@ def _redirect_url(request):
         else:
             next = request.META.get('HTTP_REFERER', settings.CAS_REDIRECT_URL)
         prefix = (('http://', 'https://')[request.is_secure()] +
-                  get_host(request))
+                  request.get_host())
         if next.startswith(prefix):
             next = next[len(prefix):]
     return next
@@ -58,7 +58,7 @@ def _logout_url(request, next_page=None):
     url = urljoin(settings.CAS_SERVER_URL, 'logout')
     if next_page:
         protocol = ('http://', 'https://')[request.is_secure()]
-        host = get_host(request)
+        host = request.get_host()
         url += '?' + urlencode({'url': protocol + host + next_page})
     return url
 
