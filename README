@@ -26,6 +26,13 @@ AUTHENTICATION_BACKENDS = (
     ...
 )
 
+
+INSTALLED_APPS = (
+	...
+	'django_bucas',
+	...
+)
+
 You will also need to configure the following CAS specific settings depending on the environment:
 
 CAS_SERVER_URL = "https://weblogin-devl.bu.edu/cas/"	# Adjust to use correct location per-environment
