@@ -24,7 +24,6 @@ Add CAS configuration lines to settings.py:
 		...
 	)
 
-
 	INSTALLED_APPS = (
 		...
 		'django_bucas',
