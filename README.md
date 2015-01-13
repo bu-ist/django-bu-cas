@@ -7,8 +7,11 @@ The BU Django CAS middleware provides CAS integration for Django projects, allow
 
 # Instructions #
 
-Add CAS configuration lines to settings.py:
+install the package using pip by running:
 
+     $ pip install https://github.com/bu-ist/django-bu-cas/tarball/v2
+
+Then add CAS configuration lines to settings.py:
 
 	MIDDLEWARE_CLASSES = (
 		...
