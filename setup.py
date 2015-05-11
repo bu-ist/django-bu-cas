@@ -9,7 +9,7 @@ setup(
 	url='http://github.com/bu-ist/django-bu-cas',
 	license='LICENSE.txt',
 	description='CAS Authentication middleware for the BU Django environment',
-	long_description=open('README').read(),
+	long_description=open('README.md').read(),
 	install_requires=[
 		"Django >= 1.1.1",
 	],
