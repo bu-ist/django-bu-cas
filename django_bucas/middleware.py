@@ -1,6 +1,9 @@
 """CAS authentication middleware"""
 
-from urllib import urlencode
+try:
+    from urllib.parse import urlencode
+except:
+    from urllib import urlencode
 
 from django.http import HttpResponseRedirect, HttpResponseForbidden
 from django.conf import settings
