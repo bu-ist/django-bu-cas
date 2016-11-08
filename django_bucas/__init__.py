@@ -23,3 +23,5 @@ for key, value in _DEFAULTS.items():
     # Suppress errors from DJANGO_SETTINGS_MODULE not being set
     except ImportError:
         pass
+
+from .sites import sites
