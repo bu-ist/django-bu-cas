@@ -21,7 +21,6 @@ class MyAdminSite(AdminSite):
             patt = urls[i]
             if not hasattr(patt, 'name'):
                 continue
-            print(patt)
             if patt.name == 'logout':
                 urls.remove(patt)
                 break;
