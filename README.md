@@ -44,10 +44,11 @@ You will also need to configure the following CAS specific settings depending on
 
 Finally, modify urls.py to include URL's for CAS login/logout, i.e.
 
+	import django_bucas
 
 	urlpatterns = patterns('',
 		...
-		url(r'^accounts/login/$', 'django_bucas.views.login'),
-		url(r'^accounts/logout/$', 'django_bucas.views.logout'),
+    
+		url(r'^accounts/', django_bucas.sites.urls),
 		...
 	)
