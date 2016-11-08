@@ -15,7 +15,14 @@ from django_bucas.views import login as cas_login, logout as cas_logout
 
 __all__ = ['CASMiddleware']
 
-class CASMiddleware(object):
+try:
+    from django.utils.deprecation import MiddlewareMixin
+except:
+    #Django<1.10 compatibility
+    MiddlewareMixin = object
+
+    
+class CASMiddleware(MiddlewareMixin):
     """Middleware that allows CAS authentication on admin pages"""
 
     def process_request(self, request):
