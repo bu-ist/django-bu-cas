@@ -1,15 +1,13 @@
 from django.contrib import admin
 from django.contrib.admin import AdminSite
-from django.core.mail import send_mail
 from django.contrib.auth.models import User, Group
-from django.contrib.auth.admin import UserAdmin
-from django.contrib.auth.admin import GroupAdmin
-
+from django.contrib.auth.admin import UserAdmin,  GroupAdmin
 from django.contrib.auth.forms import UserCreationForm
-from django.conf.urls import include, url
+from django.contrib.sites.models import Site
 from django.views.generic.base import RedirectView
 
 from django_bucas import sites
+
 
 class MyAdminSite(AdminSite):
 
@@ -31,6 +29,7 @@ class MyAdminSite(AdminSite):
 site = MyAdminSite()
 admin.site = site
 admin.site.register(Group, GroupAdmin)
+admin.site.register(Site)
 
 class WebloginUserCreationForm(UserCreationForm):
 
@@ -66,11 +65,11 @@ class CASUserAdmin(UserAdmin):
     # If added in the admin, they are assumed to be staff.
     def save_model(self, request, user, form_form, change):
         user.is_active = True
+        user.set_password(None)
         if( not user.email or user.email == "" ):
             user.email = user.username + "@bu.edu"
         super(CASUserAdmin,self).save_model(request, user, form_form, change)
 
 
 # Now register the new UserAdmin...
-# admin.site.unregister(User)
 admin.site.register(User, CASUserAdmin)
