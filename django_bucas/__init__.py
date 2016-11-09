@@ -24,4 +24,4 @@ for key, value in _DEFAULTS.items():
     except ImportError:
         pass
 
-from .sites import sites
+from .urls import urls

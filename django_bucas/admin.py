@@ -3,33 +3,7 @@ from django.contrib.admin import AdminSite
 from django.contrib.auth.models import User, Group
 from django.contrib.auth.admin import UserAdmin,  GroupAdmin
 from django.contrib.auth.forms import UserCreationForm
-from django.contrib.sites.models import Site
 from django.views.generic.base import RedirectView
-
-from django_bucas import sites
-
-
-class MyAdminSite(AdminSite):
-
-    def get_urls(self):
-        urls = super(MyAdminSite, self).get_urls()
-
-        #replace the logout url with the cas backend url.
-        for i in range(len(urls)):
-            patt = urls[i]
-            if not hasattr(patt, 'name'):
-                continue
-            if patt.name == 'logout':
-                urls.remove(patt)
-                break;
-
-        urls += sites.urls[0]
-        return urls
-
-site = MyAdminSite()
-admin.site = site
-admin.site.register(Group, GroupAdmin)
-admin.site.register(Site)
 
 class WebloginUserCreationForm(UserCreationForm):
 
@@ -72,4 +46,5 @@ class CASUserAdmin(UserAdmin):
 
 
 # Now register the new UserAdmin...
+admin.site.unregister(User)
 admin.site.register(User, CASUserAdmin)
