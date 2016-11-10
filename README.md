@@ -5,7 +5,7 @@ The BU Django CAS middleware provides CAS integration for Django projects, allow
 
 **Note: To use this middleware, you must be running django >= 1.5.**
 
-# Instructions #
+## Installation ##
 
 install the package using pip by running:
 
@@ -29,7 +29,7 @@ Then add CAS configuration lines to settings.py:
 
 	INSTALLED_APPS = (
 		...
-		'django_bucas',
+		'django_bucas', #This should be placed before 'django.contrib.admin'
 		...
 	)
 
@@ -49,6 +49,15 @@ Finally, modify urls.py to include URL's for CAS login/logout, i.e.
 	urlpatterns = patterns('',
 		...
     
-		url(r'^accounts/', django_bucas.sites.urls),
+		url(r'^accounts/', django_bucas.urls),
 		...
 	)
+
+
+## Distribution ##
+
+When modifying this package, you may notice that files are either missing or not included. You can tweak the build manifest by first deleting the MANUGEST file, then modifying the MANIFEST.in to include or prune specific files. To rebuild your package source, run:
+
+	$ python setup.py sdist --manifest-only
+
+Now commit the changes, and all the files should be available when the package is installed.

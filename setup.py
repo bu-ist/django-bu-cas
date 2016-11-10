@@ -2,7 +2,7 @@ from distutils.core import setup
 
 setup(
 	name='django-bu-cas',
-	version='1.2.0',
+	version='1.2.2',
 	author='Fyodor Wolf',
 	author_email='fwolf@bu.edu',
 	packages=['django_bucas',],
@@ -13,4 +13,7 @@ setup(
 	install_requires=[
 		"Django >= 1.5",
 	],
+	package_data={
+		'django_bucas': ['templates/admin/*.html'],
+	},
 )
